@@ -1,47 +1,21 @@
-# validatedPasswords = []
-# num = [x for x in input('\nEnter the PASSWORDS to Validate :').split(',')]
-# print('-' * 70)
-# print("\nPASSWORDS Are : " ,num ,'\n')
-
-# def checkLength(x):
-#     if  6 < len(x) < 12:
-#         if 
-#         validatedPasswords.append(x)
-#         print(validatedPasswords)
-        
-        
-
-# for x in num:
-#     checkLength(x)
-    
 import re
 
-validatedPasswords = []
-num = [x for x in input('\nEnter the PASSWORDS to Validate :').split(',')]
-print('-' * 70)
-print("\nPASSWORDS Are : " ,num ,'\n')
-for p in num:
-    x = True
-    while x:
-        if (len(p)<6 or len(p)>12):
-            break
-        elif not re.search("[a-z]",p):
-            break
-        elif not re.search("[0-9]",p):
-            break
-        elif not re.search("[A-Z]",p):
-            break
-        elif not re.search("[$#@]",p):
-            break
-        elif re.search("\s",p):
-            break
+def validatePasswords(passwords_list):
+    valid_passwords = []
+    invalid_passwords = []
+    pattern = "^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+    print('\n','-' * 70)
+
+    for password in passwords_list:
+        result = re.findall(pattern, password)
+        if result and len(password) <= 12:
+            valid_passwords.append(password)
         else:
-            # print(p ,end=',')
-            validatedPasswords.append(p)
-            x=False
-            break
-print('-' * 70)
-print("\nValid Passwords : ",validatedPasswords,'\n')
-print('-' * 70)
-if x:
-    print("Not a Valid Password")    
+            invalid_passwords.append(password)
+        
+    print("\nValid Passwords Are :",valid_passwords)
+    print("\nInValid Passwords Are :",invalid_passwords)
+    print('\n','-' * 70)
+        
+passwords_list = [x for x in input('\nEnter the PASSWORDS to Validate :').split(',')]
+validatePasswords(passwords_list)

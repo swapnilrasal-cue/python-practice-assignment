@@ -1,3 +1,4 @@
+import sys
 import math
 
 class Formula():
@@ -15,10 +16,17 @@ class Formula():
                 
 a = Formula()
 
-str = str(input("Enter comma separated integers: "))
-list = str.split (",")
+user_input = str(input("Enter comma separated integers: "))
+list_inputs = user_input.split (",")
+try:
+ 
+    for i in list_inputs:
+        b = int(i)
+        a.Calculate(b)        
+except:
+    print("Please Enter Integers Only")
+    sys.exit(1)
 
-for i in list:
-    b = int(i)
-    a.Calculate(b)    
+else:
+    print("Successfully Completed")
 
