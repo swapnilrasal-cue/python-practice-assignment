@@ -6,8 +6,7 @@ def createMatrix(input_list):
         for i in range(int(input_list[0])):
             row = []
             for j in range(int(input_list[1])):
-                value = i * j
-                row.append(value)
+                row.append(i * j)
             matrix.append(row)   
             # print(matrix,end=',')
     except:

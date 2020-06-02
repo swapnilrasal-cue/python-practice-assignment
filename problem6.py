@@ -1,16 +1,28 @@
+import re
+
 def countUpperAndLower(user_input):
-    no_of_uppercase_leters=no_of_lowercase_leters=0
-    for c in user_input:
-        if c.isupper():
-            no_of_uppercase_leters += 1
-        elif c.islower():
-            no_of_lowercase_leters += 1
-        else:
-            pass    
-    
-    print("-" * 70)    
-    print(f"\nThere are {no_of_uppercase_leters} UPPERCASE LETTERS and {no_of_lowercase_leters} LOWERCASE LETTERS.\n")
-    print("-" * 70)
-    
+    upper = re.findall('([A-Z])',user_input)
+    lower = re.findall('([a-z])',user_input)
+    print("\nThere are",len(upper),'UPPERCASE LETTERS and ' , len(lower),'LOWERCASE LETTERS')
+
 user_input = input("\nInput a string : ")
 countUpperAndLower(user_input)
+    
+
+# def countUpperAndLower(user_input):
+#     no_of_uppercase_leters=no_of_lowercase_leters=0
+#     for c in user_input:
+#         if c.isupper():
+#             no_of_uppercase_leters += 1
+#         elif c.islower():
+#             no_of_lowercase_leters += 1
+#         else:
+#             pass    
+    
+#     print("-" * 70)    
+#     print(f"\nThere are {no_of_uppercase_leters} UPPERCASE LETTERS and {no_of_lowercase_leters} LOWERCASE LETTERS.\n")
+#     print("-" * 70)
+    
+# user_input = input("\nInput a string : ")
+# countUpperAndLower(user_input)
+
